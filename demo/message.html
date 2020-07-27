@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 这个css是我引用阿里的一些字体图标，请戳： https://www.iconfont.cn/ -->
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1117508_wxidm5ry7od.css">
+    <link rel="stylesheet" href="./message.css">
+    <script src="./message.js"></script>
+</head>
+<body>
+    <!-- 消息外层容器，因为消息提醒基本上是全局的，所以这里用id，所有的弹出消息都是需要插入到这个容器里边的 -->
+    <div id="message-container">
+        <div class="message">
+            <!-- 消息图标 icon icon-success对应我的阿里字体图标的font-class -->
+            <div class="type icon icon-success"></div>
+            <!-- 消息文本 -->
+            <div class="text">这是一条正经的消息~</div>
+            <!-- 关闭按钮 -->
+            <div class="close icon icon-close"></div>
+        </div>
+        <div class="message">
+            <div class="type icon icon-error"></div>
+            <div class="text">这是一条正经的消息~</div>
+        </div>
+        <button class="btn">弹窗消息提醒</button>
+    </div>
+    
+    <script>
+        // message可以定义为全局对象，项目中可以直接调用。
+        const message = new Message();
+        document.querySelector('.btn').addEventListener('click', () => {
+            message.show({
+                type: 'warning',
+                text: '点我旁边的叉叉试试',
+                duration: 0,    // 不会自动消失
+                closeable: true, // 可手动关闭
+            });
+        });
+
+    </script>
+</body>
+</html>
